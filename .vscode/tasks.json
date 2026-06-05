@@ -1,0 +1,66 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install Backend Dependencies",
+      "type": "shell",
+      "command": "pip install -r Backend/requirements.txt",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Install Frontend Dependencies",
+      "type": "shell",
+      "command": "pip install -r Frontend/requirements.txt",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Start Backend Server",
+      "type": "shell",
+      "command": "cd Backend && python main.py",
+      "isBackground": true,
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Start Frontend Dashboard",
+      "type": "shell",
+      "command": "cd Frontend && streamlit run app.py",
+      "isBackground": true,
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Start All Services",
+      "dependsOn": [
+        "Install Backend Dependencies",
+        "Install Frontend Dependencies",
+        "Start Backend Server",
+        "Start Frontend Dashboard"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Backend API",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/Backend/main.py",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/Backend"
+            },
+            "args": []
+        },
+        {
+            "name": "Frontend Dashboard",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "streamlit",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/Frontend",
+                "BACKEND_URL": "http://localhost:8000"
+            },
+            "args": [
+                "run",
+                "${workspaceFolder}/Frontend/app.py"
+            ]
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Launch All",
+            "configurations": [
+                "Backend API",
+                "Frontend Dashboard"
+            ]
+        }
+    ]
+}
